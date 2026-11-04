@@ -1,55 +1,42 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect } from 'react';
-import './styles/global.css';
-import Navbar from './components/Navbar';
+import { useState, useCallback } from 'react';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import Nav from './components/Nav';
 import Footer from './components/Footer';
+import Lightbox from './components/Lightbox';
+import { ZoomContext } from './ZoomContext';
+import ScrollToTop from './components/ScrollToTop';
 import Home from './pages/Home';
-import About from './pages/About';
+import Work from './pages/Work';
 import Designs from './pages/Designs';
-import Websites from './pages/Websites';
-import Blog from './pages/Blog';
-import Gaming from './pages/Gaming';
+import Sites from './pages/Sites';
+import Writing from './pages/Writing';
+import About from './pages/About';
 import Contact from './pages/Contact';
-
-const pageVariants = {
-  initial: { opacity: 0, y: 16 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.25, 0.46, 0.45, 0.94] } },
-  exit: { opacity: 0, y: -16, transition: { duration: 0.3 } },
-};
-
-function ScrollTop() {
-  const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
-  return null;
-}
-
-function AnimatedRoutes() {
-  const location = useLocation();
-  return (
-    <AnimatePresence mode="wait">
-      <motion.div key={location.pathname} {...pageVariants}>
-        <Routes location={location}>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/designs" element={<Designs />} />
-          <Route path="/websites" element={<Websites />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/gaming" element={<Gaming />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-        <Footer />
-      </motion.div>
-    </AnimatePresence>
-  );
-}
+import './styles.css';
 
 export default function App() {
+  const [zoomed, setZoomed] = useState(null);
+  const zoom = useCallback((src, alt) => setZoomed({ src, alt }), []);
+  const close = useCallback(() => setZoomed(null), []);
+
   return (
-    <BrowserRouter>
-      <ScrollTop />
-      <Navbar />
-      <AnimatedRoutes />
-    </BrowserRouter>
+    <HashRouter>
+      <ZoomContext.Provider value={zoom}>
+        <ScrollToTop />
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/designs" element={<Designs />} />
+          <Route path="/sites" element={<Sites />} />
+          <Route path="/writing" element={<Writing />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+        <Footer />
+        <Lightbox src={zoomed?.src} alt={zoomed?.alt} onClose={close} />
+      </ZoomContext.Provider>
+    </HashRouter>
   );
 }

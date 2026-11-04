@@ -1,183 +1,141 @@
-import { motion } from 'framer-motion';
-import { personal, experience, education, certifications, skills } from '../data/portfolioData';
-import iqCertificate from '../assets/iq-certificate.jpg';
-
-const fadeUp = (delay = 0) => ({
-  initial: { opacity: 0, y: 30 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: false, amount: 0.15 },
-  transition: { duration: 0.6, delay },
-});
-
 export default function About() {
   return (
-    <main style={{ paddingTop: '6rem' }}>
-      {/* Header */}
-      <section style={{ position: 'relative', overflow: 'hidden' }}>
-        <div className="orb" style={{ width: 500, height: 500, background: 'var(--accent)', top: '-100px', right: '-200px' }} />
-        <div className="container" style={{ position: 'relative', zIndex: 2 }}>
-          <motion.div {...fadeUp(0.1)}><span className="section-eyebrow">Who I am</span></motion.div>
-          <motion.h1 {...fadeUp(0.2)} className="section-title" style={{ maxWidth: 700 }}>
-            Developer. Designer.<br /><em style={{ fontStyle: 'italic', color: 'var(--accent2)' }}>Creator.</em>
-          </motion.h1>
-          <motion.p {...fadeUp(0.3)} style={{ color: 'var(--text-secondary)', maxWidth: 600, lineHeight: 1.9, fontSize: '1.1rem' }}>
-            {personal.bio}
-          </motion.p>
-          <motion.div {...fadeUp(0.4)} style={{ display: 'flex', gap: '1rem', marginTop: '2rem', flexWrap: 'wrap' }}>
-            <a href={`mailto:${personal.email}`} className="btn-primary">Email Me</a>
-            <a href={personal.links.linkedin} target="_blank" rel="noreferrer" className="btn-ghost">LinkedIn ↗</a>
-            <a href={personal.links.github} target="_blank" rel="noreferrer" className="btn-ghost">GitHub ↗</a>
-          </motion.div>
-        </div>
-      </section>
+    <main>
+<section className="sec tight">
+    <div className="orb" style={{width: '500px', height: '500px', background: 'var(--accent)', top: '-200px', right: '-180px'}}></div>
+    <div className="container">
+      <p className="eyebrow">About</p>
+      <h2 className="title">Lagos-based. <em>Global reach.</em></h2>
+      <p className="sub">Five years across product design, UI/UX, brand and frontend. I design the thing and then build it, which removes a whole category of handoff loss — I know which interactions are cheap and which ones quietly cost a sprint.</p>
+    </div>
+  </section>
+  <hr className="rule" />
 
-      {/* Skills */}
-      <section style={{ background: 'var(--bg2)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
-        <div className="container">
-          <motion.div {...fadeUp()}>
-            <span className="section-eyebrow">Toolkit</span>
-            <h2 className="section-title">Skills &amp; Tools</h2>
-          </motion.div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginTop: '2rem' }}>
-            {[
-              { label: 'Design', items: skills.design, accent: 'var(--accent)' },
-              { label: 'Development', items: skills.development, accent: 'var(--teal)' },
-              { label: 'Other', items: skills.other, accent: 'var(--gold)' },
-            ].map((group, i) => (
-              <motion.div key={group.label} {...fadeUp(i * 0.1)}
-                style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', padding: '1.75rem' }}
-              >
-                <div style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: group.accent, marginBottom: '1rem' }}>{group.label}</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                  {group.items.map(s => (
-                    <span key={s} style={{ fontSize: '13px', padding: '5px 13px', borderRadius: 999, background: 'var(--surface2)', border: '1px solid var(--border)', color: 'var(--text-secondary)' }}>{s}</span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+  <section className="sec">
+    <div className="container">
+      <p className="eyebrow">Experience</p>
+      <h2 className="title" style={{fontSize: 'clamp(1.9rem,3.6vw,2.8rem)', marginBottom: '2.4rem'}}>Five years, <em>two promotions</em></h2>
+      <div className="tl">
+        <div className="job" style={{ '--jc': 'var(--teal)' }}>
+          <div className="when">Nov 2025 — May 2026</div>
+          <h3>Lead Designer</h3>
+          <div className="co">TavCorp · Lagos</div>
+          <span className="tag-t tag">Joined as intern → promoted to lead</span>
+          <ul>
+            <li>Designed and shipped the TavCorp store: catalogue, cart, checkout and payment, live in production.</li>
+            <li>Designed the customer dashboard, sign-in and every page of the company website.</li>
+            <li>Led the design department — set direction, reviewed work and mentored designers.</li>
+            <li>Built the Brisk Hauling &amp; Logistics brand identity end to end.</li>
+          </ul>
+        </div>
+        <div className="job" style={{ '--jc': 'var(--teal)' }}>
+          <div className="when">Sept 2024 — Jul 2025</div>
+          <h3>Head of Product Design &amp; Template UI/UX</h3>
+          <div className="co">SmartbloksAI · Lagos</div>
+          <span className="tag-t tag">Joined as designer → promoted to head of two functions</span>
+          <ul>
+            <li>Designed the page-builder product: editor, widget library, live canvas and the settings system behind every widget.</li>
+            <li>Built the control vocabulary that cut full-template build time from about six hours to under two.</li>
+            <li>Designed Smartbillr, the company's AI invoicing product, across six screens.</li>
+            <li>Designed 100+ templates across SaaS, e-commerce, health, real estate, hospitality and portfolio sectors.</li>
+          </ul>
+        </div>
+        <div className="job">
+          <div className="when">Jun 2023 — Sept 2024</div>
+          <h3>Web &amp; UI Designer</h3>
+          <div className="co">Ideastosite (ITS) · Lagos</div>
+          <ul>
+            <li>Produced roughly 85% of the studio's published design output — logos, brand identity, templates and social content.</li>
+            <li>Designed and built client sites in Figma, then WordPress, Elementor and custom code.</li>
+            <li>Designed and built teckafrica.org — fourteen pages for a children's tech-education charity.</li>
+            <li>Delivered benoitlondon.com, cutesaint.com, tiagababy.com and americanelectrical.com.</li>
+          </ul>
+        </div>
+        <div className="job">
+          <div className="when">Aug — Sept 2024</div>
+          <h3>Digital Technology Instructor</h3>
+          <div className="co">Abridged Summer School · Lagos</div>
+          <ul>
+            <li>Taught HTML, CSS and JavaScript to children over a summer programme, each student shipping their own site.</li>
+          </ul>
+        </div>
+        <div className="job">
+          <div className="when">Apr 2022 — May 2023</div>
+          <h3>Frontend Developer <span style={{color: 'var(--text-mute)', fontSize: '1rem'}}>(UI/UX focus)</span></h3>
+          <div className="co">AltSchool Africa · Lagos</div>
+          <ul>
+            <li>Built and maintained React and Vue interfaces — responsive, accessible and cross-browser.</li>
+            <li>Worked on performance, bug fixing and integrating components into larger systems.</li>
+          </ul>
+        </div>
+        <div className="job">
+          <div className="when">Sept 2021 — Mar 2022</div>
+          <h3>Frontend Developer Intern</h3>
+          <div className="co">HNG Internship · Lagos</div>
+          <ul>
+            <li>Rebuilt a Vue single-page application; the redesign contributed to a 40% increase in sign-ups.</li>
+            <li>Documented style guidelines to keep the team's work consistent.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr className="rule" />
+
+  <section className="sec">
+    <div className="container">
+      <p className="eyebrow">Toolkit</p>
+      <h2 className="title" style={{fontSize: 'clamp(1.9rem,3.6vw,2.8rem)', marginBottom: '2.2rem'}}>What I work <em>in</em></h2>
+      <div className="cols3">
+        <div className="panel">
+          <h4>Design</h4>
+          <div className="tags" style={{margin: 0}}>
+            <span className="tag-g tag">Figma</span><span className="tag-g tag">Adobe XD</span><span className="tag-g tag">Design systems</span>
+            <span className="tag-g tag">Wireframing</span><span className="tag-g tag">Prototyping</span><span className="tag-g tag">Usability testing</span>
+            <span className="tag-g tag">Brand &amp; logo</span><span className="tag-g tag">Illustrator</span><span className="tag-g tag">Photoshop</span>
+            <span className="tag-g tag">InDesign</span><span className="tag-g tag">Canva</span>
           </div>
         </div>
-      </section>
-
-      {/* Experience */}
-      <section>
-        <div className="container">
-          <motion.div {...fadeUp()}>
-            <span className="section-eyebrow">Career</span>
-            <h2 className="section-title">Work Experience</h2>
-          </motion.div>
-          <div style={{ marginTop: '2.5rem', position: 'relative' }}>
-            <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '1px', background: 'var(--border)' }} />
-            {experience.map((job, i) => (
-              <motion.div key={i} {...fadeUp(i * 0.07)}
-                style={{ paddingLeft: '2.5rem', paddingBottom: '3rem', position: 'relative' }}
-              >
-                <div style={{ position: 'absolute', left: '-5px', top: '6px', width: 11, height: 11, borderRadius: '50%', background: job.current ? 'var(--teal)' : 'var(--surface2)', border: `2px solid ${job.current ? 'var(--teal)' : 'var(--border)'}` }} />
-                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                  <div>
-                    <div style={{ fontWeight: 500, fontSize: '1.1rem' }}>{job.role}</div>
-                    <div style={{ color: 'var(--accent2)', fontSize: '15px', marginTop: 2 }}>{job.company}</div>
-                  </div>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4 }}>
-                    <span style={{ fontSize: '12px', color: 'var(--text-muted)', background: 'var(--surface)', border: '1px solid var(--border)', padding: '3px 12px', borderRadius: 999 }}>{job.period}</span>
-                    {job.current && <span style={{ fontSize: '11px', color: 'var(--teal)', background: 'rgba(0,212,170,0.1)', border: '1px solid rgba(0,212,170,0.25)', padding: '2px 10px', borderRadius: 999 }}>Current</span>}
-                  </div>
-                </div>
-                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.6rem', maxWidth: 660 }}>
-                  {job.bullets.map((b, j) => (
-                    <li key={j} style={{ display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
-                      <span style={{ color: 'var(--accent)', marginTop: '0.35rem', fontSize: '10px', flexShrink: 0 }}>◆</span>
-                      <span style={{ color: 'var(--text-secondary)', fontSize: '15px', lineHeight: 1.75 }}>{b}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
+        <div className="panel">
+          <h4>Build</h4>
+          <div className="tags" style={{margin: 0}}>
+            <span className="tag-g tag">React.js</span><span className="tag-g tag">Vue.js</span><span className="tag-g tag">JavaScript ES6+</span>
+            <span className="tag-g tag">HTML5</span><span className="tag-g tag">CSS3</span><span className="tag-g tag">WordPress</span>
+            <span className="tag-g tag">Elementor</span><span className="tag-g tag">WooCommerce</span><span className="tag-g tag">REST APIs</span>
+            <span className="tag-g tag">Git</span><span className="tag-g tag">TypeScript (familiar)</span>
           </div>
         </div>
-      </section>
-
-      {/* Education & Certs */}
-      <section style={{ background: 'var(--bg2)', borderTop: '1px solid var(--border)' }}>
-        <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '4rem' }}>
-            <div>
-              <motion.div {...fadeUp()}>
-                <span className="section-eyebrow">Education</span>
-                <h2 className="section-title" style={{ fontSize: '2.2rem' }}>Background</h2>
-              </motion.div>
-              {education.map((e, i) => (
-                <motion.div key={i} {...fadeUp(i * 0.1)}
-                  style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: 'var(--radius)', padding: '1.5rem', marginBottom: '1rem' }}
-                >
-                  <div style={{ fontWeight: 500, fontSize: '1rem' }}>{e.degree}</div>
-                  <div style={{ color: 'var(--accent2)', fontSize: '14px', marginTop: 4 }}>{e.institution}</div>
-                  <div style={{ color: 'var(--text-muted)', fontSize: '13px', marginTop: 4 }}>{e.year}</div>
-                </motion.div>
-              ))}
-            </div>
-            <div>
-              <motion.div {...fadeUp(0.1)}>
-                <span className="section-eyebrow">Achievements</span>
-                <h2 className="section-title" style={{ fontSize: '2.2rem' }}>Certifications</h2>
-              </motion.div>
-              {certifications.map((c, i) => (
-                <motion.div key={i} {...fadeUp(i * 0.07)}
-                  style={{ background: c.highlight ? 'rgba(124,107,240,0.07)' : 'var(--surface)', border: `1px solid ${c.highlight ? 'rgba(124,107,240,0.3)' : 'var(--border)'}`, borderRadius: 'var(--radius)', padding: '1rem 1.25rem', marginBottom: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}
-                >
-                  <span style={{ fontSize: '18px' }}>{c.highlight ? '🏆' : '✅'}</span>
-                  <div>
-                    <div style={{ fontWeight: 500, fontSize: '14px' }}>{c.title}</div>
-                    <div style={{ color: 'var(--text-muted)', fontSize: '12px', marginTop: 2 }}>{c.issuer}</div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+        <div className="panel">
+          <h4>Also</h4>
+          <div className="tags" style={{margin: '0 0 1.6rem'}}>
+            <span className="tag-g tag">Technical writing</span><span className="tag-g tag">Developer handoff</span>
+            <span className="tag-g tag">Mentoring</span><span className="tag-g tag">Teaching</span>
           </div>
-          {/* IQ Certificate */}
-          <motion.div {...fadeUp(0.2)} style={{ marginTop: '2rem' }}>
-            <div style={{
-              background: 'linear-gradient(135deg, rgba(124,107,240,0.06), rgba(0,212,170,0.04))',
-              border: '1px solid rgba(124,107,240,0.2)',
-              borderRadius: 'var(--radius-lg)',
-              padding: '2rem',
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-              gap: '2rem',
-              alignItems: 'center',
-            }}>
-              {/* Certificate image */}
-              <div style={{ borderRadius: 'var(--radius)', overflow: 'hidden', border: '1px solid rgba(124,107,240,0.2)', boxShadow: '0 8px 30px rgba(0,0,0,0.4)' }}>
-                <img
-                  src={iqCertificate}
-                  alt="IQ Test Certificate - Johnson Okafor - Score 113"
-                  style={{ width: '100%', display: 'block', objectFit: 'cover' }}
-                />
-              </div>
-              {/* Text */}
-              <div>
-                <div style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--accent)', marginBottom: '0.75rem' }}>
-                  Cognitive Assessment · MyIQ Test
-                </div>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem', marginBottom: '0.5rem' }}>
-                  <span style={{ fontFamily: 'var(--ff-display)', fontSize: '3.5rem', fontWeight: 700, lineHeight: 1, background: 'linear-gradient(135deg, var(--accent2), var(--teal))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>113</span>
-                  <span style={{ fontWeight: 500, fontSize: '1rem', color: 'var(--text)' }}>IQ Score</span>
-                </div>
-                <div style={{ fontWeight: 500, fontSize: '0.95rem', color: 'var(--accent2)', marginBottom: '0.75rem' }}>
-                  High Average — Top 19% Globally
-                </div>
-                <p style={{ fontSize: '14px', color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '1rem' }}>
-                  Scored 113 on a standardised cognitive assessment — placing in the same range as roughly 1 in 5 people worldwide. A reflection of the analytical thinking and structured problem-solving I bring to every design and development project.
-                </p>
-                <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-                  <span style={{ fontSize: '11px', padding: '4px 12px', borderRadius: 999, background: 'rgba(124,107,240,0.1)', border: '1px solid rgba(124,107,240,0.25)', color: 'var(--accent2)' }}>Certificate ID: 721 308</span>
-                  <span style={{ fontSize: '11px', padding: '4px 12px', borderRadius: 999, background: 'rgba(0,212,170,0.1)', border: '1px solid rgba(0,212,170,0.25)', color: 'var(--teal)' }}>Issued: Nov 10, 2025</span>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          <h4>Recognition</h4>
+          <div className="tags" style={{margin: 0}}>
+            <span className="tag">1st place — Zaycodes WriteTech</span>
+            <span className="tag-g tag">AltSchool Africa diploma, 2023</span>
+          </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
+  <hr className="rule" />
+
+  <section className="sec">
+    <div className="container cols2" style={{alignItems: 'center'}}>
+      <div>
+        <p className="eyebrow">Off the clock</p>
+        <h2 className="title" style={{fontSize: 'clamp(1.9rem,3.6vw,2.8rem)'}}>I also <em>play</em></h2>
+        <p className="sub">I stream and post gameplay. Not a career in disguise — but it's where I learned to edit, to read a scoreboard at a glance, and why an interface that takes a second too long is an interface that loses.</p>
+      </div>
+      <div className="handles" style={{gridTemplateColumns: '1fr'}}>
+        <a className="handle" href="https://www.youtube.com/@Afin-Gamer01/featured" target="_blank" rel="noopener noreferrer"><b>YouTube</b><span>@Afin-Gamer01 ↗</span></a>
+        <a className="handle" href="https://www.tiktok.com/@afingamer01" target="_blank" rel="noopener noreferrer"><b>TikTok</b><span>@afingamer01 ↗</span></a>
+        <a className="handle" href="https://medium.com/@johnsonzagazor06" target="_blank" rel="noopener noreferrer"><b>Medium</b><span>Technical writing ↗</span></a>
+      </div>
+    </div>
+  </section>
     </main>
   );
 }
